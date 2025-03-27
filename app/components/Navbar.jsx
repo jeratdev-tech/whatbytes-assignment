@@ -1,25 +1,42 @@
-const Navbar = () => {
+import { useState } from "react";
+import { Menu } from "lucide-react";
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="flex items-center justify-between p-4">
-      {/* ICONS AND USER */}
-      <div className="flex items-center gap-6 justify-end w-full">
-        <div className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer">
-          <div className="w-[20px] h-[20px] bg-gray-300 rounded-sm"></div>
-        </div>
-        <div className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer relative">
-          <div className="w-[20px] h-[20px] bg-gray-300 rounded-sm"></div>
-          <div className="absolute -top-3 -right-3 w-5 h-5 flex items-center justify-center bg-purple-500 text-white rounded-full text-xs">
-            1
+    <nav className="flex items-center justify-between px-6 py-4 bg-white shadow-md">
+      {/* Logo */}
+      <div className="flex items-center space-x-2"></div>
+
+      {/* Desktop Profile */}
+      <div className="hidden md:flex items-center space-x-2">
+        <img
+          src="https://via.placeholder.com/40"
+          alt="Avatar"
+          className="w-8 h-8 rounded-full"
+        />
+        <span className="font-medium">Rahil Siddique</span>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <Menu size={24} />
+      </button>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="absolute top-14 right-6 bg-white shadow-lg p-4 rounded-lg md:hidden">
+          <div className="flex items-center space-x-2">
+            <img
+              src="https://via.placeholder.com/40"
+              alt="Avatar"
+              className="w-8 h-8 rounded-full"
+            />
+            <span className="font-medium">Rahil Siddique</span>
           </div>
         </div>
-        <div className="flex flex-col">
-          <span className="text-xs leading-3 font-medium">John Doe</span>
-          <span className="text-[10px] text-gray-500 text-right">Admin</span>
-        </div>
-        <div className="w-[36px] h-[36px] bg-gray-300 rounded-full"></div>
-      </div>
-    </div>
+      )}
+    </nav>
   );
-};
-
-export default Navbar;
+}

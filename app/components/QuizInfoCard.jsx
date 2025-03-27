@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { FaHtml5 } from "react-icons/fa";
 
-const UpdateScoresModal = ({ isOpen, onClose }) => {
+const UpdateScoresModal = ({ isOpen, onClose, updateStats }) => {
   const [rank, setRank] = useState(1);
   const [percentile, setPercentile] = useState(30);
   const [score, setScore] = useState(10);
@@ -11,17 +11,21 @@ const UpdateScoresModal = ({ isOpen, onClose }) => {
     [rank, percentile, score]
   );
 
+  const handleSave = () => {
+    updateStats({ rank, percentile, score }); // This updates the Dashboard state
+    onClose(); // Close modal after saving
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg w-full max-w-lg shadow-xl relative">
         <h2 className="text-2xl font-bold mb-4">Update Scores</h2>
         <FaHtml5 className="absolute top-4 right-4 text-orange-500 text-3xl" />
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <span className="font-semibold flex items-center gap-2">
-              {" "}
               <span className="bg-blue-500 text-white px-2 py-1 rounded-full text-sm">
                 1
               </span>{" "}
@@ -31,12 +35,11 @@ const UpdateScoresModal = ({ isOpen, onClose }) => {
               type="number"
               className="border p-2 rounded w-full"
               value={memoizedValues.rank}
-              onChange={(e) => setRank(e.target.value)}
+              onChange={(e) => setRank(Number(e.target.value))}
             />
           </div>
           <div className="flex flex-col">
             <span className="font-semibold flex items-center gap-2">
-              {" "}
               <span className="bg-blue-500 text-white px-2 py-1 rounded-full text-sm">
                 2
               </span>{" "}
@@ -46,12 +49,11 @@ const UpdateScoresModal = ({ isOpen, onClose }) => {
               type="number"
               className="border p-2 rounded w-full"
               value={memoizedValues.percentile}
-              onChange={(e) => setPercentile(e.target.value)}
+              onChange={(e) => setPercentile(Number(e.target.value))}
             />
           </div>
           <div className="flex flex-col">
             <span className="font-semibold flex items-center gap-2">
-              {" "}
               <span className="bg-blue-500 text-white px-2 py-1 rounded-full text-sm">
                 3
               </span>{" "}
@@ -61,7 +63,7 @@ const UpdateScoresModal = ({ isOpen, onClose }) => {
               type="number"
               className="border p-2 rounded w-full"
               value={memoizedValues.score}
-              onChange={(e) => setScore(e.target.value)}
+              onChange={(e) => setScore(Number(e.target.value))}
             />
           </div>
         </div>
@@ -72,7 +74,10 @@ const UpdateScoresModal = ({ isOpen, onClose }) => {
           >
             Cancel
           </button>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded flex items-center gap-2">
+          <button
+            onClick={handleSave}
+            className="px-4 py-2 bg-blue-600 text-white rounded flex items-center gap-2"
+          >
             Save <span>→</span>
           </button>
         </div>
@@ -81,11 +86,12 @@ const UpdateScoresModal = ({ isOpen, onClose }) => {
   );
 };
 
-const QuizInfoCard = () => {
+const QuizInfoCard = ({ updateStats }) => {
+  // ✅ Accept updateStats as a prop
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="w-full h-full  bg-white shadow-md rounded-lg p-4 flex items-center space-x-4 border border-gray-200 ">
+    <div className="w-full h-full bg-white shadow-md rounded-lg p-4 flex items-center space-x-4 border border-gray-200">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
         alt="HTML5 Logo"
@@ -93,11 +99,11 @@ const QuizInfoCard = () => {
       />
 
       <div className="flex-1 pl-20px items-center justify-between">
-        <h3 className="text-lg font-semibold">Hyper Text Markup Language</h3>
+        <h3 className="text-lg font-bold">Hyper Text Markup Language</h3>
         <p className="text-sm text-gray-600">
-          Questions: <span className="font-medium">08</span> | Duration:{" "}
-          <span className="font-medium">15 mins</span> | Submitted on{" "}
-          <span className="font-medium">5 June 2021</span>
+          <span className="font-medium">
+            Questions: 08 | Duration: 15 mins | Submitted on 6 July 2021
+          </span>
         </p>
       </div>
 
@@ -111,6 +117,7 @@ const QuizInfoCard = () => {
       <UpdateScoresModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        updateStats={updateStats} // ✅ Pass the updateStats function
       />
     </div>
   );
