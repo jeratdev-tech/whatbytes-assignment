@@ -87,18 +87,19 @@ const UpdateScoresModal = ({ isOpen, onClose, updateStats }) => {
 };
 
 const QuizInfoCard = ({ updateStats }) => {
-  // ✅ Accept updateStats as a prop
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="w-full h-full bg-white shadow-md rounded-lg p-4 flex items-center space-x-4 border border-gray-200">
+    <div className="w-full bg-white shadow-md rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 border border-gray-200">
+      {/* Logo */}
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
         alt="HTML5 Logo"
-        className="w-12 h-12"
+        className="w-10 h-10 sm:w-12 sm:h-12"
       />
 
-      <div className="flex-1 pl-20px items-center justify-between">
+      {/* Quiz Info */}
+      <div className="flex-1 text-center sm:text-left">
         <h3 className="text-lg font-bold">Hyper Text Markup Language</h3>
         <p className="text-sm text-gray-600">
           <span className="font-medium">
@@ -110,14 +111,16 @@ const QuizInfoCard = ({ updateStats }) => {
       {/* Update Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-900"
+        className="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-900 sm:self-auto"
       >
         Update
       </button>
+
+      {/* Modal Component */}
       <UpdateScoresModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        updateStats={updateStats} // ✅ Pass the updateStats function
+        updateStats={updateStats}
       />
     </div>
   );
