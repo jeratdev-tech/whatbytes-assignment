@@ -12,14 +12,17 @@ const UpdateScoresModal = ({ isOpen, onClose, updateStats }) => {
   );
 
   const handleSave = () => {
-    updateStats({ rank, percentile, score }); // This updates the Dashboard state
-    onClose(); // Close modal after saving
+    updateStats({ rank, percentile, score });
+    onClose();
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50">
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+    >
       <div className="bg-white p-6 rounded-lg w-full max-w-lg shadow-xl relative">
         <h2 className="text-2xl font-bold mb-4">Update Scores</h2>
         <FaHtml5 className="absolute top-4 right-4 text-orange-500 text-3xl" />

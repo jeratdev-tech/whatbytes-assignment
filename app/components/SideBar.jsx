@@ -17,9 +17,9 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-screen bg-white shadow-md p-4 w-50 transition-transform duration-300 z-40 ${
+        className={`fixed top-0 left-0 h-screen bg-white shadow-md p-4 w-30 transition-transform duration-300 z-40 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:relative md:translate-x-0 md:block md:w-64`}
+        } md:relative md:translate-x-0 md:block md:w-55`}
       >
         {/* Logo & Close Button */}
         <div className="flex items-center justify-between">

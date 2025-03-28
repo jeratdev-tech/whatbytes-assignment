@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import IconMenu from "./components/IconMenu";
 import Navbar from "./components/Navbar";
 import QuizInfoCard from "./components/QuizInfoCard";
 import Statistics from "./components/Statistics";
@@ -10,6 +7,7 @@ import ComparisonGraph from "./components/ComparisonGraph";
 import SyllabusAnalysis from "./components/SyllabusAnalysis";
 import QuestionAnalysis from "./components/QuestionAnalysis";
 import { useState } from "react";
+import Sidebar from "./components/SideBar";
 
 export default function Dashboard() {
   // Centralized state for statistics
@@ -24,7 +22,7 @@ export default function Dashboard() {
     <div className="h-screen flex">
       {/* LEFT NAVIGATION */}
       <div className="w-[10%] md:w-[8%] lg:w-[13%] xl:w-[14%] p-4">
-        <IconMenu />
+        <Sidebar />
       </div>
 
       {/* MAIN CONTENT */}
