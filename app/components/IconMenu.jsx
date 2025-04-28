@@ -19,7 +19,7 @@ export default function Sidebar() {
       <div
         className={`fixed top-0 left-0 h-screen bg-white shadow-md p-4 w-30 transition-transform duration-300 z-40 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:relative md:translate-x-0 md:block md:w-55`}
+        } md:relative md:translate-x-0 md:block md:w-45`}
       >
         {/* Logo & Close Button */}
         <div className="flex items-center justify-between">

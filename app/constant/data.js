@@ -13,6 +13,6 @@ export const chartData = [
 export const syllabusData = [
   { topic: "HTML Tools, Forms, History", percentage: 80 },
   { topic: "Tags & References in HTML", percentage: 60 },
-  { topic: "Tables & References in HTML", percentage: 24 },
+  { topic: "Tables & References in HTML", percentage: 37 },
   { topic: "Tables & CSS Basics", percentage: 96 },
 ];

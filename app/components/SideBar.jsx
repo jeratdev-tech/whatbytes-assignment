@@ -11,7 +11,7 @@ export default function Sidebar() {
           onClick={() => setIsOpen(true)}
           className="p-2 md:hidden fixed top-4 left-4 z-50 bg-white shadow-md rounded-md"
         >
-          <Menu size={20} />
+          <Menu size={30} />
         </button>
       )}
 

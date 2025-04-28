@@ -21,7 +21,7 @@ export default function Dashboard() {
   return (
     <div className="h-screen flex">
       {/* LEFT NAVIGATION */}
-      <div className="w-[10%] md:w-[8%] lg:w-[13%] xl:w-[14%] p-4">
+      <div className="w-[10%] md:w-[12%] lg:w-[13%] xl:w-[20%] p-4">
         <Sidebar />
       </div>
 
